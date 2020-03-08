@@ -54,7 +54,7 @@ module.exports = {
         contentBase: resolve(__dirname, '../', 'build'),
         compress: true,
         port: 3000,
-        open: false,
+        open: true,
         hot: true,
         after: function () {
             console.log(`app run http://localhost:${this.port}`);
