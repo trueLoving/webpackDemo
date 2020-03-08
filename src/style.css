@@ -1,0 +1,5 @@
+body {
+    background-image: url("./assets/01.jpg");
+    font-size: 100px;
+    display: flex;
+}
