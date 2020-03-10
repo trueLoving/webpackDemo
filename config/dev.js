@@ -81,6 +81,19 @@ module.exports = {
         }
     },
 
+    devtool:'source-map',
+
     mode: 'development'
 
 }
+
+/**
+ * webpack dev 配置所要实现的目标
+ * 
+ * 1. 打包速度更快 
+ *     
+ * 2. 更加方便开发人员调试
+ *    1. HMR 热模块替换 局部刷新
+ *    2. source-map技术  通过构建后代码可以追踪到源代码
+ *   
+ */
