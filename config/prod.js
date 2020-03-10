@@ -16,20 +16,14 @@ module.exports = {
             {
                 test: /\.css/,
                 use: [
-                    'style-loader',
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../'
-                        }
-                    },
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',
                         options: {
                             ident: 'postcss',
                             plugins: () => {
-                                require('postcss-preset-env')();
+                                require('postcss-preset-env')()
                             }
                         }
                     }

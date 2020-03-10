@@ -1,5 +1,4 @@
-import './style.css';
+import './style/a.css';
+import './style/b.css';
 
-const a = () => 2;
-
-console.log(Promise);
+console.log("hello world");

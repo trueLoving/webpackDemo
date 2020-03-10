@@ -1,9 +1,10 @@
 {
   "name": "webpack_demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "a webpack demo",
   "main": "index.js",
   "scripts": {
+    "test": "webpack --config webpack.config.js",
     "dev": "cross-env  NODE_ENV='development'  webpack-dev-server --info=false",
     "devBuild": "cross-env  NODE_ENV='development' webpack --config webpack.config.js",
     "build": "cross-env NODE_ENV='production'  webpack --config webpack.config.js",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
+    "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "core-js": "^3.6.4",
     "cross-env": "^7.0.2",
