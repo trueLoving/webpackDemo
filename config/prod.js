@@ -1,6 +1,7 @@
 const { resolve } = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
 
@@ -84,9 +85,15 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'css/built.css'
-        })
+        }),
+        new OptimizeCssAssetsWebpackPlugin()
     ],
 
     mode: 'production'
 
 }
+
+/**
+ * 如果我们添加代码压缩的操作，那么就必然会带来打包时间的增加
+ * 在某种程度上来讲，代码体积的减小和打包时间的减短是相违背的
+ */
