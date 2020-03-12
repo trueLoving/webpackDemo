@@ -81,9 +81,8 @@ module.exports = {
         port: 3000,
         open: true,
         hot: true,
-        after: function () {
-            console.log(`app run http://localhost:${this.port}`);
-        }
+        clientLogLevel: false,
+        quiet: true
     },
 
     devtool: 'source-map',
