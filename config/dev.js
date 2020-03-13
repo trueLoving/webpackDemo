@@ -78,7 +78,8 @@ module.exports = {
         alias: {
             '@': resolve(__dirname, 'src')
         },
-        extensions: ['.js', '.jsx', '.vue']
+        extensions: ['.js', '.jsx', '.vue'],
+        modules: [resolve(__dirname, 'node_modules'), node_modules]
     }
 
 }

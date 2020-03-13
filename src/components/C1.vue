@@ -1,5 +1,5 @@
 <template>
-  <h2>This is component 2</h2>
+  <h2>This is component 1</h2>
 </template>
 
 <script>
