@@ -4,10 +4,9 @@
 
 <script>
 export default {
-
-}
+  name: "C2"
+};
 </script>
 
 <style>
-
 </style>

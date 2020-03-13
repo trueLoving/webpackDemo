@@ -1,13 +1,12 @@
 <template>
-  <h2>This is component 3</h2>
+  <h1>This is Index Page</h1>
 </template>
 
 <script>
 export default {
-  name:"C3"
-}
+  name: "Index"
+};
 </script>
 
 <style>
-
 </style>

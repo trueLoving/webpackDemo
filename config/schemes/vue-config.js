@@ -1,9 +1,9 @@
+'use strict'
 const { resolve } = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-
-const devConfig = {
+module.exports = {
 
     entry: './src/main.js',
 
@@ -11,7 +11,6 @@ const devConfig = {
         filename: 'js/built.[hash:10].js',
         path: resolve(__dirname, '../', 'build')
     },
-
 
     module: {
         rules: [
@@ -74,12 +73,15 @@ const devConfig = {
 
     mode: 'development',
 
-
     resolve: {
-        alias: {
-            '@': resolve(__dirname, 'src')
-        },
-        extensions: ['.js', '.jsx', '.vue']
+        // todo 未知原因:该别名配置不起效果,待修复
+        // alias: {
+        //     $src: resolve(__dirname, 'src/')
+        // },
+        modules: [
+            resolve(__dirname, "src"),
+            "node_modules"
+        ]
     }
 
 }
