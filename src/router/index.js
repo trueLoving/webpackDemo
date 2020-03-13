@@ -7,22 +7,29 @@ const routes = [
     {
         path: '/',
         name: 'Index',
-        component: () => import('../components/Index.vue')
-    },
-    {
-        path: '/components/c1',
-        name: 'C1',
-        component: () => import('../components/C1.vue')
-    },
-    {
-        path: '/components/c2',
-        name: 'C2',
-        component: () => import('../components/C2.vue')
-    },
-    {
-        path: '/components/c3',
-        name: 'C3',
-        component: () => import('../components/C3.vue')
+        component: () => import('../views/homePage.vue'),
+        children: [
+            {
+                path: '/',
+                name: 'C4',
+                component: () => import('../components/C4.vue')
+            },
+            {
+                path: '/components/c1',
+                name: 'C1',
+                component: () => import('../components/C1.vue')
+            },
+            {
+                path: '/components/c2',
+                name: 'C1',
+                component: () => import('../components/C2.vue')
+            },
+            {
+                path: '/components/c3',
+                name: 'C2',
+                component: () => import('../components/C3.vue')
+            }
+        ]
     }
 ];
 
