@@ -1,0 +1,1 @@
+console.log("This is a configuration webpack for vue");
