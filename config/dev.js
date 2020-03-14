@@ -1,7 +1,6 @@
-'use strict'
 const { resolve } = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 
 module.exports = {
 
@@ -12,51 +11,69 @@ module.exports = {
         path: resolve(__dirname, '../', 'build')
     },
 
+
     module: {
         rules: [
             {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.js$/,
-                exclude: file => (
-                    /node_modules/.test(file) &&
-                    !/\.vue\.js/.test(file)
-                ),
-                loader: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
+                oneOf: [
+                    {
+                        test: /\.css$/,
+                        use: [
+                            'style-loader',
+                            'css-loader'
+                        ]
+                    },
+                    {
+                        test: /\.js$/,
+                        exclude: /(node_modules|bower_components)/,
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory:true,
+                            "presets": [
+                                ["@babel/preset-env", {
+                                    useBuiltIns: 'usage',
+                                    // 指定core-js版本
+                                    corejs: {
+                                        version: 3
+                                    },
+                                    // 指定兼容性到那个版本浏览器
+                                    targets: {
+                                        "chrome": "60",
+                                        "firefox": "60",
+                                        "ie": "9",
+                                        "safari": "10",
+                                        "edge": "17"
+                                    }
+                                }]
+                            ]
+                        }
+                    },
+                    {
+                        test: /\.(png|gif|jpg|jpeg)$/,
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8 * 1024,
+                            esModule: false
+                        }
+                    },
+                    {
+                        test: /\.html$/,
+                        loader: 'html-loader'
+                    },
+                    {
+                        exclude: /\.(html|css|js|png|gif|jpeg|jpg)/,
+                        loader: 'file-loader'
+                    }
                 ]
-            },
-            {
-                test: /\.(png|gif|jpg|jpeg)$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 8 * 1024,
-                    esModule: false
-                }
-            },
-            {
-                test: /\.html$/,
-                loader: 'html-loader'
-            },
-            {
-                exclude: /\.(html|css|js|png|gif|jpeg|jpg|vue)/,
-                loader: 'file-loader'
             }
         ]
+
     },
 
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html'
-        }),
-        new VueLoaderPlugin()
+        })
     ],
 
     devServer: {
@@ -71,17 +88,17 @@ module.exports = {
 
     devtool: 'source-map',
 
-    mode: 'development',
-
-    resolve: {
-        // todo 未知原因:该别名配置不起效果,待修复
-        // alias: {
-        //     $src: resolve(__dirname, 'src/')
-        // },
-        modules: [
-            resolve(__dirname, "src"),
-            "node_modules"
-        ]
-    }
+    mode: 'development'
 
 }
+
+/**
+ * webpack dev 配置所要实现的目标
+ *
+ * 1. 打包速度更快
+ *    1. oneOf 在oneOf中只使用其中的一个loader
+ * 2. 更加方便开发人员调试
+ *    1. HMR 热模块替换 局部刷新
+ *    2. source-map技术  通过构建后代码可以追踪到源代码
+ *
+ */
