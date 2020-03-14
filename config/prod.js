@@ -1,15 +1,18 @@
 const { resolve } = require("path");
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 
 module.exports = {
 
     entry: './src/main.js',
 
     output: {
-        filename: 'js/built.[hash:10].js',
+        filename: 'js/built.[contenthash:10].js',
         path: resolve(__dirname, '../', 'build')
     },
 
@@ -42,8 +45,8 @@ module.exports = {
             {
                 exclude: /\.(html|css|js|png|gif|jpeg|jpg|vue)$/,
                 loader: 'file-loader',
-                options:{
-                    outputPath:'css/media',
+                options: {
+                    outputPath: 'css/media',
                     publicPath: './media'
                 }
             }
@@ -60,9 +63,17 @@ module.exports = {
         }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename:'css/[contenthash:10].css'
+            filename: 'css/built.[contenthash:10].css'
         }),
-        new OptimizeCssAssetsWebpackPlugin()
+        new OptimizeCssAssetsWebpackPlugin(),
+        new webpack.DllReferencePlugin({
+            manifest: resolve(__dirname, '../', 'dll/manifest.json')
+        }),
+        new AddAssetHtmlWebpackPlugin([
+            {
+                filepath: resolve(__dirname, '../', 'dll/vue.js'),
+            }
+        ])
     ],
 
     mode: 'production'
