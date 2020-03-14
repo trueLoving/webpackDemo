@@ -89,7 +89,19 @@ module.exports = {
         new OptimizeCssAssetsWebpackPlugin()
     ],
 
-    mode: 'production'
+    mode: 'production',
+
+    // chunk分块打包
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        },
+        // 解决缓存失效的问题
+        // 将每一个chunk所要引入的chunk哈希值单独打包成一个文件
+        runtimeChunk: {
+            name: entrypoint => `runtime-${entrypoint.name}`
+        }
+    }
 
 }
 
