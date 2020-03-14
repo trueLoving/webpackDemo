@@ -1,7 +1,8 @@
-const { resolve } = require("path")
+const { resolve } = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 
@@ -15,62 +16,36 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
                 test: /\.css/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => {
-                                require('postcss-preset-env')()
-                            }
-                        }
-                    }
+                    'css-loader'
                 ]
             },
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader',
-                options: {
-                    "presets": [
-                        ["@babel/preset-env", {
-                            useBuiltIns: 'usage',
-                            // 指定core-js版本
-                            corejs: {
-                                version: 3
-                            },
-                            // 指定兼容性到那个版本浏览器
-                            targets: {
-                                "chrome": "60",
-                                "firefox": "60",
-                                "ie": "9",
-                                "safari": "10",
-                                "edge": "17"
-                            }
-                        }]
-                    ]
-                }
+                loader: 'babel-loader'
             },
             {
                 test: /\.(png|gif|jpg|jpeg)$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 8 * 1024,
-                    esModule: false,
-                    outputPath: 'media',
-                    name: '[hash:10].[ext]'
-                }
+                loader: 'url-loader'
             },
             {
                 test: /\.html$/,
                 loader: 'html-loader'
             },
             {
-                exclude: /\.(html|css|js|png|gif|jpeg|jpg)/,
-                loader: 'file-loader'
+                exclude: /\.(html|css|js|png|gif|jpeg|jpg|vue)$/,
+                loader: 'file-loader',
+                options:{
+                    outputPath:'css/media',
+                    publicPath: './media'
+                }
             }
         ]
     },
@@ -83,8 +58,9 @@ module.exports = {
                 removeComments: true
             }
         }),
+        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'css/built.css'
+            filename:'css/[contenthash:10].css'
         }),
         new OptimizeCssAssetsWebpackPlugin()
     ],
@@ -92,8 +68,3 @@ module.exports = {
     mode: 'production'
 
 }
-
-/**
- * 如果我们添加代码压缩的操作，那么就必然会带来打包时间的增加
- * 在某种程度上来讲，代码体积的减小和打包时间的减短是相违背的
- */
