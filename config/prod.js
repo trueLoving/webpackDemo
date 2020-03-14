@@ -76,6 +76,16 @@ module.exports = {
         ])
     ],
 
-    mode: 'production'
+    mode: 'production',
+
+    optimization: {
+        splitChunks: {
+            chunks: "all"
+        },
+        runtimeChunk: {
+            // 将当前模块记录的引入其他模块哈希值打包成一个单独文件
+            name: entrypoint => `runtime-${entrypoint.name}`
+        },
+    }
 
 }

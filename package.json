@@ -7,7 +7,7 @@
     "test": "webpack --config webpack.config.js",
     "dev": "cross-env  NODE_ENV='development'  webpack-dev-server --info=false",
     "build": "cross-env NODE_ENV='production'  webpack --config webpack.config.js",
-    "buildDll":"webpack --config webpack.dll.js",
+    "buildDll": "webpack --config webpack.dll.js",
     "prod": "npm run build"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "add-asset-html-webpack-plugin": "^3.1.3",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
+    "babel-plugin-component": "^1.1.1",
     "core-js": "^3.6.4",
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
