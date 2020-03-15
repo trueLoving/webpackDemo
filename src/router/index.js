@@ -6,7 +6,6 @@ Vue.use(Router);
 const routes = [
     {
         path: '/',
-        name: 'Index',
         component: () => import('../views/homePage.vue'),
         children: [
             {
@@ -21,12 +20,12 @@ const routes = [
             },
             {
                 path: '/components/c2',
-                name: 'C1',
+                name: 'C2',
                 component: () => import('../components/C2.vue')
             },
             {
                 path: '/components/c3',
-                name: 'C2',
+                name: 'C3',
                 component: () => import('../components/C3.vue')
             }
         ]

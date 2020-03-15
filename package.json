@@ -7,8 +7,7 @@
     "test": "webpack --config webpack.config.js",
     "dev": "cross-env  NODE_ENV='development'  webpack-dev-server --info=false",
     "build": "cross-env NODE_ENV='production'  webpack --config webpack.config.js",
-    "buildDll": "webpack --config webpack.dll.js",
-    "prod": "npm run build"
+    "buildDll": "webpack --config webpack.dll.js"
   },
   "keywords": [],
   "author": "star sky",
