@@ -6,9 +6,9 @@ Vue.use(Router);
 const routes = [
     {
         path: '/',
-        component: () => import('../views/homePage.vue'),
+        component: () => import('../views/homePage/index.vue'),
         redirect:'/components/c1',
-        children: [       
+        children: [         
             {
                 path: '/components/c1',
                 name: 'C1',
