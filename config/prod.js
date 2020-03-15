@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
+/**
+ * webpack生产打包配置文件
+ */
 module.exports = {
 
     entry: './src/main.js',
@@ -69,7 +72,7 @@ module.exports = {
                 loader: 'html-loader'
             },
             {
-                exclude: /\.(html|css|js|png|gif|jpeg|jpg)/,
+                exclude: /\.(html|css|js|png|gif|jpeg|jpg)$/,
                 loader: 'file-loader'
             }
         ]

@@ -1,13 +1,29 @@
-// 获取当前的运行状态
-const env = process.env.NODE_ENV;
+
+/**
+ * 此配置文件为测试webpack打包性能的配置文件
+ */
+module.exports = {
+
+    entry: './src/main.js',
+
+    output: {
+        filename: 'built.[contenthash:10].'
+    },
+
+    modules: {
+        rules: [
+
+        ]
+    },
+
+    plugins: [
+
+    ],
+
+    mode: process.env.NODE_ENV
 
 
-if (env === 'development') {
-    module.exports = require('./config/dev')
-} else {
-    module.exports = require('./config/prod');
 }
-
 
 
 /**
@@ -31,7 +47,7 @@ if (env === 'development') {
  *
  * 优化打包配置
  * 针对对开发
- * 1. 打包速度更快  
+ * 1. 打包速度更快
  * 2. 代码调试更方便(热模块替换HMR,构建后代码到源代码追踪 source-map)
  * 针对对生产
  * 1. 打包速度更快

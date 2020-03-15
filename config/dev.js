@@ -1,7 +1,9 @@
 const { resolve } = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
+/**
+ * webpack开发运行配置文件
+ */
 module.exports = {
 
     entry: './src/main.js',
@@ -10,7 +12,6 @@ module.exports = {
         filename: 'js/built.[hash:10].js',
         path: resolve(__dirname, '../', 'build')
     },
-
 
     module: {
         rules: [
@@ -28,7 +29,7 @@ module.exports = {
                         exclude: /(node_modules|bower_components)/,
                         loader: 'babel-loader',
                         options: {
-                            cacheDirectory:true,
+                            cacheDirectory: true,
                             "presets": [
                                 ["@babel/preset-env", {
                                     useBuiltIns: 'usage',
@@ -99,6 +100,5 @@ module.exports = {
  *    1. oneOf 在oneOf中只使用其中的一个loader
  * 2. 更加方便开发人员调试
  *    1. HMR 热模块替换 局部刷新
- *    2. source-map技术  通过构建后代码可以追踪到源代码
- *
+ *    2. source-map技术  构建后代码可以追踪到源代码
  */
