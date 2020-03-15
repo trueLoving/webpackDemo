@@ -69,7 +69,7 @@ module.exports = {
         quiet: true
     },
 
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
 
     mode: 'development',
 
