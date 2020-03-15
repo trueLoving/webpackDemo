@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
@@ -74,7 +75,11 @@ module.exports = {
             {
                 filepath: resolve(__dirname, '../', 'dll/vue.js'),
             }
-        ])
+        ]),
+        new WorkboxWebpackPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
+        })
     ],
 
     mode: 'production',

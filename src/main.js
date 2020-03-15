@@ -24,3 +24,15 @@ new Vue({
     router,
     render: h => h(App)
 })
+
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(() => {
+                console.log('构建成功');
+            }).catch(() => {
+                console.log("构建失败");
+            })
+    })
+}
