@@ -1,69 +1,27 @@
 <template>
   <el-container style="height: 98vh; border: 1px solid #eee">
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu :default-openeds="['4']">
-        <el-submenu index="1">
+      <el-menu :default-active="active" :router="true">
+        <el-menu-item index="/components/c1">
           <template slot="title">
-            <i class="el-icon-message"></i>导航一
+            <i class="el-icon-setting"></i>Component 1
           </template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="2">
+        </el-menu-item>
+        <el-menu-item index="/components/c2">
           <template slot="title">
-            <i class="el-icon-menu"></i>导航二
+            <i class="el-icon-setting"></i>Component 2
           </template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="2-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="2-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="3">
+        </el-menu-item>
+        <el-menu-item index="/components/c3">
           <template slot="title">
-            <i class="el-icon-setting"></i>导航三
+            <i class="el-icon-setting"></i>Component 3
           </template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-            <el-menu-item index="3-2">选项3</el-menu-item>
-            <el-menu-item index="3-2">选项4</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="3-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="3-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="4">
+        </el-menu-item>
+        <el-menu-item index="/components/c4">
           <template slot="title">
-            <i class="el-icon-setting"></i>测试4
+            <i class="el-icon-setting"></i>Component 4
           </template>
-          <el-menu-item-group>
-            <el-menu-item index="4-1">选项1</el-menu-item>
-            <el-menu-item index="4-2">选项2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
+        </el-menu-item>
       </el-menu>
     </el-aside>
 
@@ -80,7 +38,9 @@
         <span>王小虎</span>
       </el-header>
 
-      <router-view />
+      <transition name="fade">
+        <router-view />
+      </transition>
       
     </el-container>
   </el-container>
@@ -97,8 +57,25 @@
   color: #333;
   height: 98vh;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      active: "/components/c1"
+    };
+  },
+  mounted() {
+    this.active = this.$route.path;
+  }
+};
 </script>

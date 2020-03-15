@@ -2,6 +2,7 @@ import { Container, Aside, Header, Main } from "element-ui";
 import { Dropdown, DropdownMenu, DropdownItem } from "element-ui";
 import { Menu, MenuItem, MenuItemGroup, Submenu } from "element-ui";
 import { Table, TableColumn } from "element-ui";
+import { Image } from "element-ui";
 
 
 const components = [
@@ -17,7 +18,8 @@ const components = [
     Menu,
     MenuItem,
     MenuItemGroup,
-    Submenu
+    Submenu,
+    Image
 ]
 
 export function installEl(Vue) {
