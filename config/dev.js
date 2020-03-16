@@ -46,7 +46,7 @@ module.exports = {
                 loader: 'html-loader'
             },
             {
-                exclude: /\.(html|css|js|png|gif|jpeg|jpg|vue)/,
+                exclude: /\.(html|css|js|png|gif|jpeg|jpg|vue)$/,
                 loader: 'file-loader'
             }
         ]
