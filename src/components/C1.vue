@@ -1,5 +1,8 @@
 <template>
-  <el-image style="width: 100px; height: 100px" :src="require('../assets/01.jpg')"></el-image>
+  <div>
+    <h2>This is component 1</h2>
+    <img src="../assets/01.jpg" style="height:100px" />
+  </div>
 </template>
 
 <script>

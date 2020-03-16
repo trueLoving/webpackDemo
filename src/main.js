@@ -27,13 +27,17 @@ new Vue({
 
 
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')
-            .then(() => {
-                console.log('构建成功');
-            }).catch(() => {
-                console.log("构建失败");
-            })
-    })
-}
+/**
+ * pwa的配置代码
+ * 在生产环境下开启
+ */
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', () => {
+//         navigator.serviceWorker.register('./service-worker.js')
+//             .then(() => {
+//                 console.log('构建成功');
+//             }).catch(() => {
+//                 console.log("构建失败");
+//             })
+//     })
+// }

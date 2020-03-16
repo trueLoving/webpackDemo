@@ -38,7 +38,11 @@ module.exports = {
             },
             {
                 test: /\.(png|gif|jpg|jpeg)$/,
-                loader: 'url-loader'
+                loader: 'url-loader',
+                options: {
+                    esModule: false,
+                    limit: 8 * 1024
+                }
             },
             {
                 test: /\.html$/,
