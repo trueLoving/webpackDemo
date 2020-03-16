@@ -9,6 +9,9 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
+/**
+ * webpack的打包配置
+ */
 module.exports = {
 
     entry: './src/main.js',

@@ -1,9 +1,27 @@
-// 获取当前的运行状态
-const env = process.env.NODE_ENV;
+const { resolve } = require('path');
 
+/**
+ * webpack的测试配置
+ */
+module.exports = {
 
-if (env === 'development') {
-    module.exports = require('./config/dev')
-} else {
-    module.exports = require('./config/prod');
+    entry: './src/main.js',
+
+    output: {
+        filename: 'js/buult_[contenthash:10].js',
+        output: resolve(__dirname, 'build')
+    },
+
+    module: {
+        rules: [
+
+        ]
+    },
+
+    plugins: [
+
+    ],
+
+    mode: 'development'
+
 }
