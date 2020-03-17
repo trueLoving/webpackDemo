@@ -65,24 +65,28 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
+            favicon:'./favicon.icon',
             minify: {
                 collapseWhitespace: true,
                 removeComments: true
             }
         }),
-        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/built.[contenthash:10].css'
         }),
         new OptimizeCssAssetsWebpackPlugin(),
-        new webpack.DllReferencePlugin({
-            manifest: resolve(__dirname, '../', 'dll/manifest.json')
-        }),
+        new VueLoaderPlugin(),
         new AddAssetHtmlWebpackPlugin([
             {
                 filepath: resolve(__dirname, '../', 'dll/vue.js'),
             }
         ]),
+        new webpack.DefinePlugin({
+            IS_PRODUCTION:process.env.NODE_ENV === 'production'
+        }),
+        new webpack.DllReferencePlugin({
+            manifest: resolve(__dirname, '../', 'dll/manifest.json')
+        }),
         new WorkboxWebpackPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true

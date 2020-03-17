@@ -3,6 +3,8 @@ const { resolve } = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
+
 
 /**
  * webpack的运行配置
@@ -59,9 +61,13 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: 'index.html',
+            favicon:'./favicon.ico'
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.DefinePlugin({
+            IS_PRODUCTION:process.env.NODE_ENV === 'production'
+        })
     ],
 
     devServer: {
