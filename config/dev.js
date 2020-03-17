@@ -62,11 +62,11 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'index.html',
-            favicon:'./favicon.ico'
+            favicon: resolve(__dirname, '../', 'favicon.ico'),
         }),
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
-            IS_PRODUCTION:process.env.NODE_ENV === 'production'
+            IS_PRODUCTION: process.env.NODE_ENV === 'production'
         })
     ],
 

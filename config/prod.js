@@ -65,7 +65,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
-            favicon:'./favicon.icon',
+            favicon: resolve(__dirname, '../', 'favicon.ico'),
             minify: {
                 collapseWhitespace: true,
                 removeComments: true
@@ -82,7 +82,7 @@ module.exports = {
             }
         ]),
         new webpack.DefinePlugin({
-            IS_PRODUCTION:process.env.NODE_ENV === 'production'
+            IS_PRODUCTION: process.env.NODE_ENV === 'production'
         }),
         new webpack.DllReferencePlugin({
             manifest: resolve(__dirname, '../', 'dll/manifest.json')

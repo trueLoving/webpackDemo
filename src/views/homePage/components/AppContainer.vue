@@ -12,7 +12,7 @@
       <span>王小虎</span>
     </el-header>
     <transition name="fade">
-      <router-view />
+      <router-view style="padding:20px"/>
     </transition>
   </el-container>
 </template>
