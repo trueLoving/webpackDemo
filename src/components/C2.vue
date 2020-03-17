@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>This is component 2</h2>
-    <img src="../assets/01.jpg" style="height:100px">
+    <img src="../assets/02.jpg" style="height:100px">
   </div>
 </template>
 
