@@ -7,7 +7,8 @@
     "test": "webpack --config webpack.config.js",
     "dev": "cross-env  NODE_ENV='development'  webpack-dev-server --info=false --config config/dev.js",
     "build": "cross-env NODE_ENV='production'  webpack --config config/prod.js",
-    "buildDll": "webpack --config webpack.dll.js"
+    "buildDll": "webpack --config webpack.dll.js",
+    "debug":"node --inspect-brk=5858 ./node_modules/.bin/webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "star sky",
