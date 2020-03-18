@@ -53,7 +53,10 @@ module.exports = {
             },
             {
                 exclude: /\.(html|css|js|png|gif|jpeg|jpg|vue)$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    esModule: false
+                }
             }
         ]
     },

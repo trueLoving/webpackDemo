@@ -3,8 +3,8 @@
     <el-menu :default-active="active" :router="true">
       <el-menu-item v-for="(item,index) in routes" :key="index" :index="item.path">
       <template slot="title">
-          <i :class="item.meta.icon"></i>{{item.meta.title || 'hello world'}} 
-        </template>
+        <i :class="item.meta.icon"></i>{{item.meta.title || 'hello world'}} 
+      </template>
       </el-menu-item>
     </el-menu>
   </el-aside>
