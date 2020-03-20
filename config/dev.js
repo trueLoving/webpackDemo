@@ -89,9 +89,9 @@ module.exports = {
 
     resolve: {
         // todo 未知原因:该别名配置不起效果,待修复
-        // alias: {
-        //     $src: resolve(__dirname, 'src/')
-        // },
+        alias: {
+            $src: "/hello world"
+        },
         modules: [
             resolve(__dirname, "src"),
             "node_modules"

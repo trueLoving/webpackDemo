@@ -2,6 +2,7 @@ import Vue from "vue";
 
 import App from './App.vue';
 import router from './router';
+import store from './store';
 
 /**
  * 开发模式下使用下面方法来按需加载el
@@ -24,6 +25,7 @@ Vue.config.productionTip = false
 new Vue({
     el: "#app",
     router,
+    store,
     render: h => h(App)
 })
 

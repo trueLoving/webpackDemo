@@ -1,12 +1,13 @@
 <template>
-  <h1>This is Index Page</h1>
+  <h2>二刺螈</h2>
 </template>
 
 <script>
 export default {
-  name: "Index"
-};
+
+}
 </script>
 
 <style>
+
 </style>
