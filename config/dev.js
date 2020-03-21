@@ -85,17 +85,12 @@ module.exports = {
 
     devtool: 'eval-source-map',
 
-    mode: 'development',
-
     resolve: {
-        // todo 未知原因:该别名配置不起效果,待修复
         alias: {
-            $src: "/hello world"
-        },
-        modules: [
-            resolve(__dirname, "src"),
-            "node_modules"
-        ]
-    }
+            '@': resolve(__dirname, '../', 'src')
+        }
+    },
+
+    mode: 'development'
 
 }
